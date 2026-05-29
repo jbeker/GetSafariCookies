@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3FEB4BB51B581ABE001EDDCB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEB4BB41B581ABE001EDDCB /* main.m */; };
+		3FEB4BC21B581ABE001EDDCB /* BCCookie.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEB4BC11B581ABE001EDDCB /* BCCookie.m */; };
+		3FEB4BC51B581ABE001EDDCB /* BCParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEB4BC41B581ABE001EDDCB /* BCParser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,10 @@
 /* Begin PBXFileReference section */
 		3FEB4BB11B581ABE001EDDCB /* GetSafariCookies */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GetSafariCookies; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FEB4BB41B581ABE001EDDCB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3FEB4BC01B581ABE001EDDCB /* BCCookie.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BCCookie.h; sourceTree = "<group>"; };
+		3FEB4BC11B581ABE001EDDCB /* BCCookie.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BCCookie.m; sourceTree = "<group>"; };
+		3FEB4BC31B581ABE001EDDCB /* BCParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BCParser.h; sourceTree = "<group>"; };
+		3FEB4BC41B581ABE001EDDCB /* BCParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BCParser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,10 @@
 			isa = PBXGroup;
 			children = (
 				3FEB4BB41B581ABE001EDDCB /* main.m */,
+				3FEB4BC01B581ABE001EDDCB /* BCCookie.h */,
+				3FEB4BC11B581ABE001EDDCB /* BCCookie.m */,
+				3FEB4BC31B581ABE001EDDCB /* BCParser.h */,
+				3FEB4BC41B581ABE001EDDCB /* BCParser.m */,
 			);
 			path = GetSafariCookies;
 			sourceTree = "<group>";
@@ -119,6 +129,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FEB4BB51B581ABE001EDDCB /* main.m in Sources */,
+				3FEB4BC21B581ABE001EDDCB /* BCCookie.m in Sources */,
+				3FEB4BC51B581ABE001EDDCB /* BCParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,7 +172,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -196,7 +208,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};
