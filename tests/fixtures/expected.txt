@@ -1,0 +1,4 @@
+example.com	FALSE	/	FALSE	1700000000	sid	abc123
+.example.com	TRUE	/	FALSE	1700000000	pref	dark
+secure.example.com	FALSE	/app	TRUE	1700000000	token	xyz
+#HttpOnly_auth.example.com	FALSE	/	TRUE	1700000000	session	deadbeef
