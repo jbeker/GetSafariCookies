@@ -2,33 +2,43 @@
 //  main.m
 //  GetSafariCookies
 //
-//  Created by Jeremy Agostino on 7/16/15.
-//  Copyright (c) 2015 GroundControl. All rights reserved.
-//
 
 #import <Foundation/Foundation.h>
+#import "BCParser.h"
+#import "BCCookie.h"
+
+static NSString *DefaultCookiePath(void) {
+    return [NSHomeDirectory() stringByAppendingPathComponent:
+        @"Library/Containers/com.apple.Safari/Data/Library/Cookies/Cookies.binarycookies"];
+}
 
 int main(int argc, const char * argv[]) {
-	@autoreleasepool {
+    @autoreleasepool {
+        NSString *path = (argc > 1)
+            ? [NSString stringWithUTF8String:argv[1]]
+            : DefaultCookiePath();
 
-		NSArray * cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies];
-		for (NSHTTPCookie * cookie in cookies) {
+        NSError *err = nil;
+        NSData *data = [NSData dataWithContentsOfFile:path options:0 error:&err];
+        if (!data) {
+            fprintf(stderr, "getsafaricookies: cannot read Safari cookies at %s\n",
+                    path.UTF8String);
+            fprintf(stderr, "  %s\n", err.localizedDescription.UTF8String);
+            fprintf(stderr, "  Grant Full Disk Access to your terminal in System Settings >\n"
+                            "  Privacy & Security > Full Disk Access, then retry.\n");
+            return 1;
+        }
 
-			NSString * line = [NSString stringWithFormat:@""
-							   "%@\t"	// domain
-							   "TRUE\t"
-							   "%@\t"	// path
-							   "FALSE\t"
-							   "%ld\t"	// expire time
-							   "%@\t"	// name
-							   "%@\n",		// value
-							   cookie.domain,
-							   cookie.path,
-							   (long)cookie.expiresDate.timeIntervalSince1970,
-							   cookie.name,
-							   cookie.value];
-			printf("%s", [line cStringUsingEncoding:NSUTF8StringEncoding]);
-		}
-	}
+        NSArray<BCCookie *> *cookies = [BCParser parseData:data error:&err];
+        if (!cookies) {
+            fprintf(stderr, "getsafaricookies: failed to parse cookies: %s\n",
+                    err.localizedDescription.UTF8String);
+            return 1;
+        }
+
+        for (BCCookie *cookie in cookies) {
+            fputs(cookie.netscapeLine.UTF8String, stdout);
+        }
+    }
     return 0;
 }
